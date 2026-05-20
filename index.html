@@ -194,7 +194,50 @@ footer p { font-size:15px; color:var(--muted); }
 /* impede scroll horizontal dos círculos decorativos */
 .hero { overflow:hidden; }
 
-/* WISH */
+/* BOOK SECTION */
+.book-section {
+  background: var(--bg); padding: 100px 24px; text-align: center; position: relative;
+}
+.book-cover-wrap {
+  display: inline-flex; align-items: center; gap: 32px;
+  background: #fff; border-radius: 16px; padding: 32px 40px;
+  box-shadow: 0 8px 40px rgba(30,24,18,0.08); margin-bottom: 48px;
+  flex-wrap: wrap; justify-content: center;
+}
+.book-spine {
+  width: 14px; height: 120px; border-radius: 3px 0 0 3px;
+  background: linear-gradient(180deg, #c0681f, #D4782A);
+}
+.book-info { text-align: left; }
+.book-emoji { font-size: 40px; display: block; margin-bottom: 10px; }
+.book-title-text {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 18px; color: var(--ink); margin-bottom: 4px; line-height: 1.2;
+}
+.book-author { font-size: 13px; color: var(--muted); font-style: italic; font-family: 'Lora', serif; }
+
+.book-quote-text {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: clamp(20px, 3.5vw, 30px); line-height: 1.75;
+  color: var(--ink); max-width: 580px; margin: 0 auto 20px;
+}
+.book-quote-attr {
+  font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 36px;
+}
+.book-note {
+  display: inline-block; background: var(--amber-pale);
+  border: 1px solid var(--amber-light); border-radius: 12px;
+  padding: 16px 28px; font-family: 'Lora', serif; font-style: italic;
+  font-size: 16px; color: var(--muted); max-width: 460px; line-height: 1.7;
+  cursor: text; outline: none;
+}
+.book-note:empty::before { content: attr(data-placeholder); color: var(--amber-light); }
+
+@media(max-width:480px) {
+  .book-cover-wrap { padding: 24px; gap: 20px; }
+  .book-section { padding: 72px 20px; }
+}
 .wish-section {
   background: var(--ink); padding:100px 24px; text-align:center; position:relative; overflow:hidden;
 }
@@ -328,6 +371,33 @@ footer p { font-size:15px; color:var(--muted); }
       Você é uma dessas pessoas que deixa tudo mais leve. Obrigado por existir e por fazer parte da minha vida do jeito que faz. Feliz aniversário!
     </p>
     <p contenteditable="true" spellcheck="false" class="msg-sign" data-placeholder="— sua assinatura">— com carinho 🧡</p>
+  </div>
+
+  <!-- LIVRO -->
+  <div class="book-section reveal">
+    <p class="section-eyebrow">📖 pra quem ama uma boa história</p>
+    <h2 class="section-title" style="margin-bottom:36px">um livro que te representa</h2>
+
+    <div class="book-cover-wrap">
+      <div class="book-spine"></div>
+      <div class="book-info">
+        <span class="book-emoji">🖤</span>
+        <p class="book-title-text">Era uma vez um<br>coração partido</p>
+        <p class="book-author">Stephanie Garber</p>
+      </div>
+    </div>
+
+    <p class="book-quote-text">
+      "Toda história tem potencial para infinitos fins."
+    </p>
+    <p class="book-quote-attr">— Stephanie Garber</p>
+
+    <div contenteditable="true"
+         spellcheck="false"
+         class="book-note"
+         data-placeholder="escreva aqui por que esse livro lembra ela…">
+      Assim como a Evangeline, você acredita em finais felizes — e isso é uma das coisas mais bonitas em você. Feliz aniversário.
+    </div>
   </div>
 
   <!-- PEDIDO -->
