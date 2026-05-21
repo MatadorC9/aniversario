@@ -164,6 +164,22 @@ body::before {
 .photo-slot img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
 .photo-slot:hover img { transform:scale(1.04); }
 
+.photo-slot--empty {
+  background: linear-gradient(145deg, var(--rose-pale) 0%, #fde8f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo-slot--empty::before {
+  content: '📷';
+  font-size: 32px;
+  opacity: 0.35;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
 .photo-caption { 
   position:absolute; bottom:0; left:0; right:0; 
   padding:20px 10px 8px; 
@@ -407,16 +423,13 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
         <img src="https://i.ibb.co/hxVyhp82/Whats-App-Image-2026-05-21-at-09-08-35.jpg" alt="Memória">
         <div class="photo-caption">11/02</div>
       </div>
-      <div class="photo-slot">
-        <img src="https://via.placeholder.com/400x500/FDF0F5/C4688F?text=Sua+Foto+Aqui" alt="Memória">
+      <div class="photo-slot photo-slot--empty">
         <div class="photo-caption">uma legenda…</div>
       </div>
-      <div class="photo-slot">
-        <img src="https://via.placeholder.com/400x500/FDF0F5/C4688F?text=Sua+Foto+Aqui" alt="Memória">
+      <div class="photo-slot photo-slot--empty">
         <div class="photo-caption">uma legenda…</div>
       </div>
-      <div class="photo-slot">
-        <img src="https://via.placeholder.com/400x500/FDF0F5/C4688F?text=Sua+Foto+Aqui" alt="Memória">
+      <div class="photo-slot photo-slot--empty">
         <div class="photo-caption">uma legenda…</div>
       </div>
     </div>
