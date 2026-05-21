@@ -582,9 +582,9 @@ function launchConfetti(){
 /* ── PHOTO SLOTS ── */
 const grid=document.getElementById('photoGrid');
 const preloaded=[
-  'https://i.ibb.co/yFhZkNVq/IMG-20251228-145450.jpg',
-  'https://i.ibb.co/23CcwQRh/IMG-20260227-100243.jpg',
-  '','','',''
+  {src:'https://i.ibb.co/yFhZkNVq/IMG-20251228-145450.jpg', caption:'28/12'},
+  {src:'https://i.ibb.co/23CcwQRh/IMG-20260227-100243.jpg', caption:'27/02'},
+  {src:'',caption:''},{src:'',caption:''},{src:'',caption:''},{src:'',caption:''}
 ];
 for(let i=0;i<6;i++){
   const slot=document.createElement('div');
@@ -625,16 +625,17 @@ for(let i=0;i<6;i++){
     slot.querySelector('input[type="file"]').value='';
     slot.querySelector('.photo-caption input').value='';
   });
-  if(preloaded[i]){ setSlotImage(slot, preloaded[i]); }
+  if(preloaded[i] && preloaded[i].src){ setSlotImage(slot, preloaded[i].src, preloaded[i].caption); }
   grid.appendChild(slot);
 }
 
-function setSlotImage(slot, src){
+function setSlotImage(slot, src, caption){
   const img=document.createElement('img');
   slot.insertBefore(img, slot.querySelector('.photo-caption'));
   img.src=src;
   slot.classList.add('has-photo');
   slot.querySelector('.slot-inner').style.display='none';
+  if(caption){ slot.querySelector('.photo-caption input').value=caption; }
 }
 
 /* ── SCROLL REVEAL ── */
