@@ -1,6 +1,6 @@
-Feito! Troquei a legenda da terceira foto para **11/02** como você pediu.
+Feito! Removi absolutamente todos os comentários do código (tanto do HTML, quanto do CSS e do Javascript). O arquivo agora está bem mais "limpo" e leve.
 
-Aqui está o código completo com essa correção. É só copiar e colar por cima do seu `index.html` atual:
+É só copiar e colar lá no seu GitHub substituindo o anterior:
 
 ```html
 <!DOCTYPE html>
@@ -36,7 +36,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── GRAIN TEXTURE ── */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 999;
@@ -46,7 +45,6 @@ body::before {
   background-size: 200px;
 }
 
-/* ── FLOATING STARS ── */
 .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .star { position: absolute; font-size: 14px; opacity: 0; animation: twinkle ease-in-out infinite; }
 @keyframes twinkle {
@@ -54,7 +52,6 @@ body::before {
   50%      { opacity: 0.5; transform: scale(1.2) rotate(20deg); }
 }
 
-/* ── WHITELIST ── */
 #whitelist-screen {
   position: fixed; inset: 0; z-index: 9999;
   background: #1A0F1E; display: none;
@@ -70,7 +67,6 @@ body::before {
 .wl-btn:hover { background: #b05a80; transform: translateY(-2px); }
 .wl-error { color: #ff6b6b; font-family: 'DM Sans', sans-serif; font-size: 14px; margin-top: 16px; display: none; }
 
-/* ── COUNTDOWN ── */
 #countdown-screen {
   position: fixed; inset: 0; z-index: 100;
   background: #1A0F1E;
@@ -99,13 +95,10 @@ body::before {
   font-family:'Caveat',cursive; font-size:16px;
 }
 
-/* ── CONFETTI ── */
 #confetti-canvas { position:fixed; inset:0; pointer-events:none; z-index:50; }
 
-/* ── SITE ── */
 #site { display:none; position:relative; z-index:1; }
 
-/* ── HERO ── */
 .hero {
   min-height:100vh; display:flex; flex-direction:column;
   align-items:center; justify-content:center;
@@ -145,7 +138,6 @@ body::before {
 .scroll-hint { font-family:'Caveat',cursive; font-size:16px; color:var(--muted); animation:fadeUp 0.8s ease 1s both, bob 2.5s ease 2s infinite; }
 @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
-/* ── DECORATIVE DIVIDER ── */
 .deco-div {
   display:flex; align-items:center; gap:14px; margin:0 auto 56px;
   max-width:320px;
@@ -153,13 +145,11 @@ body::before {
 .deco-div::before,.deco-div::after { content:''; flex:1; height:1px; background:var(--rose-light); }
 .deco-div span { font-size:16px; color:var(--rose); white-space:nowrap; font-family:'Caveat',cursive; }
 
-/* ── SECTIONS ── */
 .section { padding:80px 24px; max-width:980px; margin:0 auto; }
 .section-eyebrow { font-family:'Caveat',cursive; font-size:17px; color:var(--rose); margin-bottom:8px; }
 .section-title { font-family:'Playfair Display',serif; font-size:clamp(28px,5vw,44px); font-weight:700; margin-bottom:48px; line-height:1.15; }
 .section-title em { font-style:italic; font-weight:400; color:var(--lavender); }
 
-/* ── PHOTO GRID ── */
 .photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
 @media(max-width:600px) { .photo-grid { grid-template-columns:repeat(2,1fr); } }
 
@@ -186,7 +176,6 @@ body::before {
   color:#fff; font-family:'Caveat',cursive; font-size:16px; text-align:center; 
 }
 
-/* ── MESSAGE ── */
 .msg-section {
   background:var(--lavender-pale); padding:100px 24px; text-align:center;
   border-top:1px solid rgba(155,137,196,0.2); border-bottom:1px solid rgba(155,137,196,0.2);
@@ -203,10 +192,8 @@ body::before {
 }
 .msg-sign { font-family:'Caveat',cursive; font-size:22px; color:var(--lavender); }
 
-/* ── BOOK ── */
 .book-section { background:var(--bg); padding:100px 24px; text-align:center; }
 
-/* 3D book */
 .book-scene { perspective:900px; display:inline-block; margin-bottom:0.5rem; }
 .book-3d {
   width:160px; height:240px; position:relative;
@@ -268,7 +255,6 @@ body::before {
   .book-note { width:100%; padding:14px 18px; font-size:16px; }
 }
 
-/* ── WISH ── */
 .wish-section { background:var(--rose-pale); border-top:1px solid var(--rose-light); padding:100px 24px; text-align:center; position:relative; overflow:hidden; }
 .candle-wrap { display:inline-block; cursor:pointer; margin-bottom:28px; user-select:none; }
 .flame { width:18px; height:26px; margin:0 auto; animation:flicker 1.2s ease-in-out infinite alternate; transform-origin:bottom center; }
@@ -320,7 +306,6 @@ body::before {
 .wish-floating { position:absolute; pointer-events:none; font-size:20px; animation:floatUp 2.5s ease forwards; }
 @keyframes floatUp { 0%{opacity:1;transform:translateY(0) scale(1)} 100%{opacity:0;transform:translateY(-160px) scale(0.5)} }
 
-/* ── FOOTER ── */
 footer { padding:70px 24px; text-align:center; }
 .footer-deco { font-size:28px; letter-spacing:10px; display:block; margin-bottom:20px; animation:pulse 2.5s ease infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
@@ -332,7 +317,6 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
 .reveal { opacity:0; transform:translateY(32px); transition:opacity 0.7s ease, transform 0.7s ease; }
 .reveal.on { opacity:1; transform:translateY(0); }
 
-/* ── MOBILE ── */
 @media(max-width:480px) {
   .cd-sep { display:none; }
   .cd-blocks { display:grid; grid-template-columns:1fr 1fr; gap:12px; width:100%; max-width:260px; }
@@ -343,18 +327,12 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
   .wish-textarea { font-size:16px; }
   .wish-btn { width:100%; }
   footer { padding:48px 20px; }
-
-  /* livro */
   .book-card { padding:20px; gap:16px; width:100%; }
   .book-note { width:100%; padding:14px 18px; font-size:16px; }
   .book-quote-text { font-size:18px; }
   .deco-div { max-width:100%; }
-
-  /* msg */
   .msg-text { font-size:18px; }
   .msg-quote { font-size:64px; }
-
-  /* hero */
   .hero-title { line-height: 1; }
   .hero-name { font-size:clamp(28px,9vw,48px); }
 }
@@ -524,7 +502,6 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
 </div>
 
 <script>
-/* ── STARS ── */
 const starsEl = document.getElementById('stars');
 const starChars = ['✦','✧','⋆','★','✩','·'];
 for(let i=0;i<28;i++){
@@ -536,7 +513,6 @@ for(let i=0;i<28;i++){
   starsEl.appendChild(s);
 }
 
-/* ── COUNTDOWN ── */
 const TARGET = new Date('2026-05-22T00:00:00');
 const DEV = new URLSearchParams(location.search).has('dev');
 let countdownInterval;
@@ -551,7 +527,6 @@ function tick(){
   document.getElementById('cd-s').textContent=pad(Math.floor((diff%6e4)/1e3));
 }
 
-/* ── REVEAL ── */
 function reveal(){
   const cd=document.getElementById('countdown-screen');
   cd.style.transition='opacity 1.2s ease, transform 1.2s ease';
@@ -564,7 +539,6 @@ function reveal(){
   },1200);
 }
 
-/* ── WHITELIST LOGIC ── */
 const wlScreen = document.getElementById('whitelist-screen');
 const wlInput = document.getElementById('wl-input');
 const wlBtn = document.getElementById('wl-btn');
@@ -606,8 +580,6 @@ if (localStorage.getItem('site_unlocked') === 'true') {
   wlScreen.classList.add('active');
 }
 
-
-/* ── CONFETTI ── */
 function launchConfetti(){
   const canvas=document.getElementById('confetti-canvas');
   const ctx=canvas.getContext('2d');
@@ -637,7 +609,6 @@ function launchConfetti(){
   draw();
 }
 
-/* ── SCROLL REVEAL ── */
 function setupScrollReveal(){
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});
@@ -645,7 +616,6 @@ function setupScrollReveal(){
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
 
-/* ── WISH ── */
 const candleWrap=document.getElementById('candleWrap');
 const wishInputWrap=document.getElementById('wishInputWrap');
 const wishBtn=document.getElementById('wishBtn');
@@ -716,7 +686,6 @@ window.addEventListener('resize',()=>{
   if(c){c.width=window.innerWidth;c.height=window.innerHeight;}
 });
 
-/* ── BOOK 3D TOUCH ── */
 (function(){
   const book = document.querySelector('.book-3d');
   if(!book) return;
