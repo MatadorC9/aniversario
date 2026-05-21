@@ -1,3 +1,8 @@
+Feito! Troquei a legenda da terceira foto para **11/02** como você pediu.
+
+Aqui está o código completo com essa correção. É só copiar e colar por cima do seu `index.html` atual:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -48,6 +53,22 @@ body::before {
   0%,100% { opacity: 0; transform: scale(0.6) rotate(0deg); }
   50%      { opacity: 0.5; transform: scale(1.2) rotate(20deg); }
 }
+
+/* ── WHITELIST ── */
+#whitelist-screen {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #1A0F1E; display: none;
+  flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 40px 24px;
+}
+#whitelist-screen.active { display: flex; }
+.wl-title { font-family:'Playfair Display',serif; font-style:italic; font-size: 32px; color: #fff; margin-bottom: 16px; }
+.wl-sub { font-family:'DM Sans',sans-serif; font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 24px; max-width: 320px;}
+.wl-input { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(196,104,143,0.3); border-radius: 8px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 16px; padding: 12px 16px; width: 100%; max-width: 280px; margin-bottom: 16px; outline: none; text-align: center; }
+.wl-input:focus { border-color: var(--rose); }
+.wl-btn { background: var(--rose); border: none; border-radius: 999px; color: #fff; font-family: 'Caveat', cursive; font-size: 20px; padding: 10px 32px; cursor: pointer; transition: transform 0.2s, background 0.2s; }
+.wl-btn:hover { background: #b05a80; transform: translateY(-2px); }
+.wl-error { color: #ff6b6b; font-family: 'DM Sans', sans-serif; font-size: 14px; margin-top: 16px; display: none; }
 
 /* ── COUNTDOWN ── */
 #countdown-screen {
@@ -111,23 +132,16 @@ body::before {
   font-family:'Caveat',cursive; font-size:clamp(32px,7vw,62px);
   font-weight:700; color:var(--lavender); display:inline-block;
   border-bottom:2.5px dotted var(--lavender); padding-bottom:2px;
-  margin-bottom:8px; cursor:text; outline:none;
+  margin-bottom:8px;
   animation:fadeUp 0.8s ease 0.6s both;
-}
-.hero-name:empty::before { content:attr(data-placeholder); color:var(--lavender-pale); }
-.edit-hint {
-  display:inline-flex; align-items:center; gap:5px;
-  font-family:'Caveat',cursive; font-size:15px; color:var(--muted);
-  margin-bottom:20px; animation:fadeUp 0.8s ease 0.7s both;
 }
 .hero-msg {
   font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(17px,3vw,21px);
   color:var(--muted); max-width:480px; line-height:2;
-  margin:0 auto 52px; cursor:text; outline:none;
+  margin:0 auto 52px;
   animation:fadeUp 0.8s ease 0.8s both;
   text-align:center;
 }
-.hero-msg:empty::before { content:attr(data-placeholder); color:var(--sand); font-style:italic; }
 .scroll-hint { font-family:'Caveat',cursive; font-size:16px; color:var(--muted); animation:fadeUp 0.8s ease 1s both, bob 2.5s ease 2s infinite; }
 @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
@@ -151,9 +165,9 @@ body::before {
 
 .photo-slot {
   aspect-ratio:4/5; position:relative; overflow:hidden;
-  background:#fff; cursor:pointer;
+  background:#fff;
   border-radius:4px;
-  border:1.5px dashed var(--rose-light);
+  border:1.5px solid var(--rose-light);
   box-shadow: 3px 3px 0px var(--rose-light);
   transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -162,24 +176,15 @@ body::before {
   box-shadow:5px 5px 0px var(--rose-light);
 }
 .photo-slot:nth-child(even):hover { transform:rotate(1deg) translateY(-4px); }
-.photo-slot.has-photo { border-style:solid; border-color:var(--rose-light); }
 .photo-slot img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
 .photo-slot:hover img { transform:scale(1.04); }
 
-.slot-inner { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--rose-light); transition:color 0.3s; background:var(--rose-pale); }
-.photo-slot:hover .slot-inner { color:var(--rose); }
-.slot-inner svg { width:26px; height:26px; stroke:currentColor; fill:none; stroke-width:1.5; }
-.slot-inner span { font-family:'Caveat',cursive; font-size:15px; }
-
-.photo-caption { position:absolute; bottom:0; left:0; right:0; padding:20px 10px 8px; background:linear-gradient(transparent,rgba(42,26,36,0.65)); display:none; }
-.has-photo .photo-caption { display:block; }
-.photo-caption input { background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.3); color:#fff; font-family:'Caveat',cursive; font-size:15px; width:100%; outline:none; padding:2px 0; }
-.photo-caption input::placeholder { color:rgba(255,255,255,0.4); }
-
-.photo-remove { position:absolute; top:6px; right:6px; width:26px; height:26px; background:rgba(42,26,36,0.5); border:none; border-radius:50%; color:#fff; font-size:12px; cursor:pointer; display:none; align-items:center; justify-content:center; transition:background 0.2s; z-index:5; }
-.has-photo:hover .photo-remove,.has-photo .photo-remove { display:flex; }
-.photo-remove:hover { background:var(--rose); }
-input[type="file"] { display:none; }
+.photo-caption { 
+  position:absolute; bottom:0; left:0; right:0; 
+  padding:20px 10px 8px; 
+  background:linear-gradient(transparent,rgba(42,26,36,0.65)); 
+  color:#fff; font-family:'Caveat',cursive; font-size:16px; text-align:center; 
+}
 
 /* ── MESSAGE ── */
 .msg-section {
@@ -195,11 +200,8 @@ input[type="file"] { display:none; }
 .msg-text {
   font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(20px,3.5vw,28px);
   line-height:1.8; color:var(--ink); max-width:600px; margin:0 auto 32px;
-  cursor:text; outline:none;
 }
-.msg-text:empty::before { content:attr(data-placeholder); color:var(--sand); }
-.msg-sign { font-family:'Caveat',cursive; font-size:22px; color:var(--lavender); cursor:text; outline:none; }
-.msg-sign:empty::before { content:attr(data-placeholder); color:rgba(155,137,196,0.3); }
+.msg-sign { font-family:'Caveat',cursive; font-size:22px; color:var(--lavender); }
 
 /* ── BOOK ── */
 .book-section { background:var(--bg); padding:100px 24px; text-align:center; }
@@ -253,9 +255,8 @@ input[type="file"] { display:none; }
   display:inline-block; background:#fff; border:1.5px solid var(--lavender-pale);
   box-shadow:3px 3px 0 var(--lavender-pale); border-radius:12px;
   padding:18px 28px; font-family:'Caveat',cursive; font-size:18px;
-  color:var(--muted); max-width:460px; line-height:1.7; cursor:text; outline:none;
+  color:var(--muted); max-width:460px; line-height:1.7;
 }
-.book-note:empty::before { content:attr(data-placeholder); color:var(--sand); }
 
 @media(max-width:480px) {
   .book-scene { perspective:600px; }
@@ -272,7 +273,7 @@ input[type="file"] { display:none; }
 .candle-wrap { display:inline-block; cursor:pointer; margin-bottom:28px; user-select:none; }
 .flame { width:18px; height:26px; margin:0 auto; animation:flicker 1.2s ease-in-out infinite alternate; transform-origin:bottom center; }
 .flame::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 50% 90%,#ff9500 0%,#ffcc00 40%,rgba(255,200,0,0) 100%); border-radius:50% 50% 30% 30%; }
-.flame::after { content:''; position:absolute; top:6px; left:50%; transform:translateX(-50%); width:8px; height:14px; background:radial-gradient(ellipse at 50% 80%,rgba(255,255,200,0.9) 0%,transparent 70%); border-radius:50%; }
+.flame::after { content:''; position:absolute; top:6px; left:50%; transform:translateX(-50%); width:8px; height:14px; background:radial-gradient(ellipse at 50% 80%,rgba(255,200,0,0.9) 0%,transparent 70%); border-radius:50%; }
 @keyframes flicker { 0%{transform:scaleX(1) scaleY(1) rotate(-1deg);opacity:1} 50%{transform:scaleX(0.88) scaleY(1.08) rotate(1.5deg);opacity:0.9} 100%{transform:scaleX(1.08) scaleY(0.95) rotate(-2deg);opacity:1} }
 .candle-wrap.blown .flame { display:none; }
 .smoke {
@@ -339,7 +340,6 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
   .hero { padding:48px 20px; }
   .section { padding:56px 20px; }
   .msg-section,.wish-section,.book-section { padding:72px 20px; }
-  .has-photo .photo-remove { display:flex; }
   .wish-textarea { font-size:16px; }
   .wish-btn { width:100%; }
   footer { padding:48px 20px; }
@@ -363,6 +363,15 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
 <body>
 
 <div class="stars" id="stars"></div>
+
+<div id="whitelist-screen">
+  <span class="cd-deco" style="font-size: 40px; margin-bottom: 10px;">🔒</span>
+  <h1 class="wl-title">Área Restrita</h1>
+  <p class="wl-sub">Identifique-se. Se esse site for para você, você sabe o que colocar aqui.</p>
+  <input type="text" id="wl-input" class="wl-input" placeholder="Seu nome..." autocomplete="off">
+  <button id="wl-btn" class="wl-btn">Entrar</button>
+  <p id="wl-error" class="wl-error">Acesso negado. Esse site não é para você!</p>
+</div>
 
 <div id="countdown-screen">
   <span class="cd-deco">🔮</span>
@@ -395,10 +404,9 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
       Feliz<br><em>Aniversário</em>
     </h1>
 
-    <div contenteditable="true" spellcheck="false" class="hero-name" data-placeholder="nome dela">Lays</div>
-    <div class="edit-hint">✎ &nbsp; clique nos textos pra editar</div>
+    <div class="hero-name">Lays</div>
 
-    <p contenteditable="true" spellcheck="false" class="hero-msg" data-placeholder="escreva uma mensagem aqui…">
+    <p class="hero-msg">
       Feliz Aniversário, Lays.<br>
       Espero que seu dia seja maravilhoso.<br>
       Que venham muitos e muitos aniversários<br>
@@ -412,16 +420,42 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
     <div class="deco-div"><span>✦ galeria de memórias ✦</span></div>
     <p class="section-eyebrow">📸 cada momento conta</p>
     <h2 class="section-title">os bons <em>momentos</em></h2>
-    <div class="photo-grid" id="photoGrid"></div>
+    
+    <div class="photo-grid" id="photoGrid">
+      <div class="photo-slot">
+        <img src="https://i.ibb.co/yFhZkNVq/IMG-20251228-145450.jpg" alt="Foto de 28/12">
+        <div class="photo-caption">28/12</div>
+      </div>
+      <div class="photo-slot">
+        <img src="https://i.ibb.co/23CcwQRh/IMG-20260227-100243.jpg" alt="Foto de 27/02">
+        <div class="photo-caption">27/02</div>
+      </div>
+      <div class="photo-slot">
+        <img src="https://i.ibb.co/hxVyhp82/Whats-App-Image-2026-05-21-at-09-08-35.jpg" alt="Memória">
+        <div class="photo-caption">11/02</div>
+      </div>
+      <div class="photo-slot">
+        <img src="https://via.placeholder.com/400x500/FDF0F5/C4688F?text=Sua+Foto+Aqui" alt="Memória">
+        <div class="photo-caption">uma legenda…</div>
+      </div>
+      <div class="photo-slot">
+        <img src="https://via.placeholder.com/400x500/FDF0F5/C4688F?text=Sua+Foto+Aqui" alt="Memória">
+        <div class="photo-caption">uma legenda…</div>
+      </div>
+      <div class="photo-slot">
+        <img src="https://via.placeholder.com/400x500/FDF0F5/C4688F?text=Sua+Foto+Aqui" alt="Memória">
+        <div class="photo-caption">uma legenda…</div>
+      </div>
+    </div>
   </div>
 
   <div class="msg-section reveal">
     <p class="section-eyebrow" style="color:var(--lavender)">✦ de coração</p>
     <div class="msg-quote">"</div>
-    <p contenteditable="true" spellcheck="false" class="msg-text" data-placeholder="escreva uma mensagem mais pessoal aqui…">
+    <p class="msg-text">
       Lays! Queria aproveitar o seu dia pra ser o mais sincero possível: eu faço muita questão de você. Meu carinho por você é imenso e você é uma pessoa muito importante pra mim. Um beijo enorme pra você!
     </p>
-    <p contenteditable="true" spellcheck="false" class="msg-sign" data-placeholder="— sua assinatura">— com carinho, José 🧡</p>
+    <p class="msg-sign">— com carinho, José 🧡</p>
   </div>
 
   <div class="book-section reveal">
@@ -450,7 +484,7 @@ footer p { font-family:'Caveat',cursive; font-size:17px; color:var(--muted); }
       <p class="book-quote-attr">— Stephanie Garber</p>
     </div>
 
-    <div contenteditable="true" spellcheck="false" class="book-note" data-placeholder="escreva por que esse livro lembra ela…">
+    <div class="book-note">
       Assim como a Evangeline, você acredita em finais felizes — e isso é uma das coisas mais bonitas em você. Feliz aniversário.
     </div>
   </div>
@@ -505,16 +539,17 @@ for(let i=0;i<28;i++){
 /* ── COUNTDOWN ── */
 const TARGET = new Date('2026-05-22T00:00:00');
 const DEV = new URLSearchParams(location.search).has('dev');
+let countdownInterval;
+
 function pad(n){return String(n).padStart(2,'0');}
 function tick(){
   const diff=TARGET-new Date();
-  if(diff<=0){reveal();return;}
+  if(diff<=0){reveal(); clearInterval(countdownInterval); return;}
   document.getElementById('cd-d').textContent=pad(Math.floor(diff/864e5));
   document.getElementById('cd-h').textContent=pad(Math.floor((diff%864e5)/36e5));
   document.getElementById('cd-m').textContent=pad(Math.floor((diff%36e5)/6e4));
   document.getElementById('cd-s').textContent=pad(Math.floor((diff%6e4)/1e3));
 }
-if(DEV){reveal();}else{tick();setInterval(tick,1000);}
 
 /* ── REVEAL ── */
 function reveal(){
@@ -528,6 +563,49 @@ function reveal(){
     setupScrollReveal();
   },1200);
 }
+
+/* ── WHITELIST LOGIC ── */
+const wlScreen = document.getElementById('whitelist-screen');
+const wlInput = document.getElementById('wl-input');
+const wlBtn = document.getElementById('wl-btn');
+const wlError = document.getElementById('wl-error');
+
+const allowedNames = ['lays', 'lais'];
+
+function unlockSite() {
+  wlScreen.classList.remove('active');
+  localStorage.setItem('site_unlocked', 'true');
+  
+  if(DEV){
+    reveal();
+  } else {
+    tick();
+    countdownInterval = setInterval(tick, 1000);
+  }
+}
+
+function tryUnlock() {
+  const typedName = wlInput.value.trim().toLowerCase();
+  
+  if (allowedNames.includes(typedName)) {
+    unlockSite();
+  } else {
+    wlError.style.display = 'block';
+    wlInput.value = '';
+  }
+}
+
+wlBtn.addEventListener('click', tryUnlock);
+wlInput.addEventListener('keypress', (e) => {
+  if(e.key === 'Enter') tryUnlock();
+});
+
+if (localStorage.getItem('site_unlocked') === 'true') {
+  unlockSite();
+} else {
+  wlScreen.classList.add('active');
+}
+
 
 /* ── CONFETTI ── */
 function launchConfetti(){
@@ -559,65 +637,6 @@ function launchConfetti(){
   draw();
 }
 
-/* ── PHOTO SLOTS ── */
-const grid=document.getElementById('photoGrid');
-const preloaded=[
-  {src:'https://i.ibb.co/yFhZkNVq/IMG-20251228-145450.jpg', caption:'28/12'},
-  {src:'https://i.ibb.co/23CcwQRh/IMG-20260227-100243.jpg', caption:'27/02'},
-  {src:'',caption:''},{src:'',caption:''},{src:'',caption:''},{src:'',caption:''}
-];
-for(let i=0;i<6;i++){
-  const slot=document.createElement('div');
-  slot.className='photo-slot';
-  slot.innerHTML=`
-    <input type="file" accept="image/*">
-    <div class="slot-inner">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <circle cx="8.5" cy="8.5" r="1.5"/>
-        <path d="M21 15l-5-5L5 21"/>
-      </svg>
-      <span>adicionar foto</span>
-    </div>
-    <div class="photo-caption"><input type="text" placeholder="uma legenda…" maxlength="55"></div>
-    <button class="photo-remove">✕</button>`;
-  slot.addEventListener('click',e=>{
-    if(e.target.closest('.photo-remove')||e.target.closest('.photo-caption'))return;
-    slot.querySelector('input[type="file"]').click();
-  });
-  slot.querySelector('input[type="file"]').addEventListener('change',e=>{
-    const file=e.target.files[0];if(!file)return;
-    const r=new FileReader();
-    r.onload=ev=>{
-      let img=slot.querySelector('img');
-      if(!img){img=document.createElement('img');slot.insertBefore(img,slot.querySelector('.photo-caption'));}
-      img.src=ev.target.result;
-      slot.classList.add('has-photo');
-      slot.querySelector('.slot-inner').style.display='none';
-    };
-    r.readAsDataURL(file);
-  });
-  slot.querySelector('.photo-remove').addEventListener('click',e=>{
-    e.stopPropagation();
-    const img=slot.querySelector('img');if(img)img.remove();
-    slot.classList.remove('has-photo');
-    slot.querySelector('.slot-inner').style.display='';
-    slot.querySelector('input[type="file"]').value='';
-    slot.querySelector('.photo-caption input').value='';
-  });
-  if(preloaded[i] && preloaded[i].src){ setSlotImage(slot, preloaded[i].src, preloaded[i].caption); }
-  grid.appendChild(slot);
-}
-
-function setSlotImage(slot, src, caption){
-  const img=document.createElement('img');
-  slot.insertBefore(img, slot.querySelector('.photo-caption'));
-  img.src=src;
-  slot.classList.add('has-photo');
-  slot.querySelector('.slot-inner').style.display='none';
-  if(caption){ slot.querySelector('.photo-caption input').value=caption; }
-}
-
 /* ── SCROLL REVEAL ── */
 function setupScrollReveal(){
   const obs=new IntersectionObserver(entries=>{
@@ -639,7 +658,6 @@ candleWrap.addEventListener('click',()=>{
   if(candleWrap.classList.contains('blown'))return;
   candleWrap.classList.add('blown');
 
-  // fumaça
   const wick = candleWrap.querySelector('.candle-wick');
   ['smoke smoke-1','smoke smoke-2','smoke smoke-3'].forEach(cls=>{
     const s=document.createElement('div');
@@ -709,7 +727,6 @@ window.addEventListener('resize',()=>{
     book.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
   }
 
-  // touch
   book.addEventListener('touchstart', e=>{
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
@@ -730,17 +747,14 @@ window.addEventListener('resize',()=>{
     if(!dragging) return;
     dragging = false;
     book.style.transition = 'transform 0.7s ease';
-    // salva posição atual
     const m = book.style.transform.match(/rotateY\(([^)]+)deg\).*rotateX\(([^)]+)deg\)/);
     if(m){ curY = parseFloat(m[1]); curX = parseFloat(m[2]); }
-    // volta suavemente ao padrão após 1.5s
     setTimeout(()=>{
       curY = baseY; curX = baseX;
       applyTransform(baseY, baseX);
     }, 1500);
   });
 
-  // mouse (desktop já tem hover no CSS, mas por garantia)
   book.addEventListener('mousedown', e=>{
     startX = e.clientX; startY = e.clientY;
     dragging = true;
@@ -766,3 +780,5 @@ window.addEventListener('resize',()=>{
 </script>
 </body>
 </html>
+
+```
